@@ -1,0 +1,18 @@
+
+.pizza-item{
+    padding: 20px;
+    background-color: #fff;
+    margin: 10px 5px;
+}
+.pizza-item img{
+    max-width: 200px;
+    min-height: 200px;
+}
+.varients,
+.quantity{
+    margin: 15px 5px;
+}
+
+.pizza-modal img{
+    max-width: 350px;
+}
