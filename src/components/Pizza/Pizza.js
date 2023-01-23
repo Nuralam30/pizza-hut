@@ -24,7 +24,7 @@ const Pizza = (props) => {
                         <h6>Varients</h6>
                         <Form.Select aria-label="Default select example" value={varient} onChange={ (e) => setVarient(e.target.value)}>
                             {
-                                varients.map(va => <option value={va}> {va}</option>)
+                                varients.map((va, index) => <option value={va} key={index}> {va}</option>)
                             }
                         </Form.Select>
                     </div>
@@ -32,7 +32,7 @@ const Pizza = (props) => {
                         <h6>Quantity</h6>
                         <Form.Select aria-label="Default select example" value={quantity} onChange={ (e) => setQuantity(e.target.value)}>
                             {
-                                [...Array(10).keys()].map((x, i) => <option value={i+1}> {i+1}</option>)
+                                [...Array(10).keys()].map((x, i) => <option value={i+1} key={i}> {i+1}</option>)
                             }
                         </Form.Select>
                     </div>
