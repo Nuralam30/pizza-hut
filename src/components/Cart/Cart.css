@@ -1,0 +1,47 @@
+
+
+.cart-item{
+    padding: 10px;
+    margin: 10px 0px;
+    background-color: #fff;
+}
+.item-info {
+    text-align: left;
+}
+.item-info h5,
+.item-info p {
+    margin: 0;
+}
+.item-info p{
+    font-size: 1.1rem;
+}
+.increment,
+.decrement{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0px 5px;
+    cursor: pointer;
+}
+.increment{
+    color: green;
+}
+.decrement{
+    color: red;
+}
+
+.item-image img{
+    max-width: 70px;
+    height: 70px;
+}
+.remove-btn{
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: red;
+    border: none;
+    outline: none;
+    margin-left: 20px;
+}
+.remove-btn:hover{
+    background-color: transparent;
+    color: #000;
+}
