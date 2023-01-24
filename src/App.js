@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Cart from './components/Cart/Cart';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
  
@@ -21,6 +22,7 @@ function App() {
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/cart' element={<Cart></Cart>}></Route>
+          <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
       </Router>
       

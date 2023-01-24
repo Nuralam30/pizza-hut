@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.css';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from './../redux/actions/cartActions';
+import { addToCart, removeFromCart } from './../redux/actions/cartActions';
 
 const Cart = () => {
     const cartState = useSelector(state => state.cartReducer);
@@ -22,7 +22,7 @@ const Cart = () => {
                         {
                             cartItems.map(item => <div className='cart-item d-flex justify-content-between align-items-center' key={item._id}>
                                 <div className="item-info">
-                                    <h5>{item.name}</h5>
+                                    <h5>{item.name} [{item.varient}]</h5>
                                     <p>price : {item.quantity} * {item.prices[0][item.varient]} = {item.price}</p>
                                     <p>Quantity : 
                                         <span className='increment' onClick={() => addtocart(item, item.quantity+1, item.varient)}> + </span> 
@@ -32,7 +32,7 @@ const Cart = () => {
                                 </div>
                                 <div className="item-image">
                                     <img src={item.image} alt="this is product" />
-                                    <Button className='remove-btn' size='sm'> X </Button>
+                                    <Button className='remove-btn' size='sm' onClick={() => dispatch(removeFromCart(item))}> X </Button>
                                 </div>
                             </div>)
                         }
