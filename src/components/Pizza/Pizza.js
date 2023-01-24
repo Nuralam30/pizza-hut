@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Pizza.css';
 import { Button, Col, Form, Modal } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './../redux/actions/cartActions';
 
 const Pizza = (props) => {
     const { name, image, varients, prices, description } = props.pizza;
@@ -10,6 +12,11 @@ const Pizza = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const dispatch = useDispatch();
+
+    const addtocart = () => {
+        dispatch( addToCart(props.pizza, quantity, varient))
+    }
 
     return (
         <Col xs={12} md='6' lg='4'>
@@ -40,7 +47,7 @@ const Pizza = (props) => {
 
                 <div className="price-addToCart d-flex justify-content-between">
                     <h6>Price: {prices[0][varient] * quantity} BDT/-</h6>
-                    <Button size='sm'>ADD TO CART</Button>
+                    <Button size='sm' onClick={addtocart}>ADD TO CART</Button>
                 </div>
             </div>
 
