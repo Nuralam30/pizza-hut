@@ -7,6 +7,7 @@ import { addToCart, removeFromCart } from './../redux/actions/cartActions';
 const Cart = () => {
     const cartState = useSelector(state => state.cartReducer);
     const cartItems = cartState.cartItems;
+    const subtotal = cartItems.reduce( (x, item) => x + item.price, 0);
     const dispatch = useDispatch();
 
     const addtocart = (item, quantity, varient) => {
@@ -37,8 +38,9 @@ const Cart = () => {
                             </div>)
                         }
                     </Col>
-                    <Col lg='4' xs>
-                        <h1>Subtotal </h1>
+                    <Col lg='4' xs className='prices-pay'>
+                        <h1>Subtotal : {subtotal}</h1>
+                        <Button size='sm' className='pay-btn btn-danger'>Pay Now</Button>
                     </Col>
                 </Row>
             </Container>
