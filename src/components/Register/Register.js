@@ -24,7 +24,6 @@ const Register = () => {
                 email,
                 password
             }
-            console.log(user)
             dispatch(userRegister(user))
         }
     }
@@ -67,8 +66,10 @@ const Register = () => {
                         <Button variant="danger" onClick={register}>
                             REGISTER
                         </Button>
+                        <div className='mt-4 text-center'>
+                            <Link to='/login'> Login here</Link>
+                        </div>
                     </Form>
-                    <Link to='/login' className='mt-4'> Login here</Link>
                 </div>
             </Container>
         </div>

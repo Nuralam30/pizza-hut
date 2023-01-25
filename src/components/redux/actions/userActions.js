@@ -12,3 +12,16 @@ export const userRegister = (user) => async dispatch => {
         dispatch({type: 'USER_REGISTER_FAILED', payload: error})
     }
 }
+
+
+export const userLogin = (user) => async dispatch => {
+    dispatch({ type: 'USER_LOGIN_REQUEST'})
+
+    try {
+        const response = await axios.post('/api/users/login', user)
+        console.log(response)
+        dispatch({ type: 'USER_LOGIN_SUCCESS'})
+    } catch (error) {
+        dispatch({ type: 'USER_LOGIN_FAILED', payload: error})
+    }
+}

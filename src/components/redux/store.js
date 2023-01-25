@@ -5,12 +5,13 @@ import thunk from 'redux-thunk';
 import { getAllPizzasReducer } from './reducers/pizzaReducers';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { cartReducer } from './reducers/cartReducer';
-import { userRegisterReducer } from './reducers/userReducer';
+import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
 
 const finalReducers = combineReducers({
     getAllPizzasReducer: getAllPizzasReducer,
     cartReducer: cartReducer,
-    userRegisterReducer: userRegisterReducer
+    userRegisterReducer: userRegisterReducer,
+    userLoginReducer: userLoginReducer
 })
 
 
