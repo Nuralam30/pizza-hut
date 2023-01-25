@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Register.css';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userRegister } from '../redux/actions/userActions';
 
 const Register = () => {
 
@@ -10,7 +12,9 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [cPassword, setcPassword] = useState('');
 
-    const registerUser = () => {
+    const dispatch = useDispatch();
+
+    const register = () => {
         if(password !== cPassword){
             alert('password are not matched')
         }
@@ -21,6 +25,7 @@ const Register = () => {
                 password
             }
             console.log(user)
+            dispatch(userRegister(user))
         }
     }
 
@@ -59,7 +64,7 @@ const Register = () => {
                             onChange={(e) =>setcPassword(e.target.value)}
                             />
                         </Form.Group>
-                        <Button variant="danger" onClick={registerUser}>
+                        <Button variant="danger" onClick={register}>
                             REGISTER
                         </Button>
                     </Form>
