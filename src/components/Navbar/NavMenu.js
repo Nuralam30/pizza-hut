@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 const NavMenu = () => {
     const cartState = useSelector(state => state.cartReducer);
+    const userState = useSelector(state => state.userLoginReducer);
+    const { currentUser } = userState;
 
     return (
         <div>
@@ -13,7 +15,10 @@ const NavMenu = () => {
                 <Container>
                 <Navbar.Brand href="/">Pizza Hut</Navbar.Brand>
                 <Nav className="ml-auto">
-                    <Nav.Link href="/login">Login</Nav.Link>
+                    {
+                        currentUser ? <Nav.Link >{currentUser.name}</Nav.Link> : 
+                        <Nav.Link href="/login">Login</Nav.Link>
+                    }
                     <Nav.Link href="/cart">Cart {cartState.cartItems.length}</Nav.Link>
                 </Nav>
                 </Container>

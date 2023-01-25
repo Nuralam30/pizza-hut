@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
@@ -10,6 +10,12 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+
+    useEffect( () => {
+        if(localStorage.getItem('currentUser')){
+            window.location.href = '/'
+        }
+    }, [])
 
     const login = () => {
         const user = {
