@@ -3,6 +3,7 @@ import './Cart.css';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from './../redux/actions/cartActions';
+import Checkout from '../Checkout/Checkout';
 
 const Cart = () => {
     const cartState = useSelector(state => state.cartReducer);
@@ -39,8 +40,8 @@ const Cart = () => {
                         }
                     </Col>
                     <Col lg='4' xs className='prices-pay'>
-                        <h1>Subtotal : {subtotal}</h1>
-                        <Button size='sm' className='pay-btn btn-danger'>Pay Now</Button>
+                        <h1>Subtotal : {subtotal} /-</h1>
+                        <Checkout subtotal={subtotal}></Checkout>
                     </Col>
                 </Row>
             </Container>
