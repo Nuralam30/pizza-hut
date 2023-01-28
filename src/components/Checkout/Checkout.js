@@ -2,11 +2,16 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { placeOrder } from '../redux/actions/orderActions';
 
 const Checkout = ({subtotal}) => {
 
+    const dispatch = useDispatch()
+
     const tokenHandler = (token) => {
         console.log(token)
+        dispatch(placeOrder(token, subtotal))
     }
 
     return (
