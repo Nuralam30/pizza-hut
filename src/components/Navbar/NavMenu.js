@@ -21,7 +21,7 @@ const NavMenu = () => {
                         {
                             currentUser ? <NavDropdown title={currentUser.name} id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
+                                <NavDropdown.Item href="/orders">
                                     Orders
                                 </NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => dispatch(userLogout())}>LogOut</NavDropdown.Item>
