@@ -24,7 +24,7 @@ const Admin = () => {
             <Container>
                 <h1 className='mb-4'>Admin Panel</h1>
 
-                <div className="admin-navlist">
+                <div className="admin-navlist mb-4 d-flex flex-wrap">
                     <Link to='users-list' className='admin-nav-item'> Users List</Link>
                     <Link to='/admin/pizzas-list' className='admin-nav-item'> Pizzas List</Link>
                     <Link to='/admin/add-pizza' className='admin-nav-item'> Add New Pizza</Link>

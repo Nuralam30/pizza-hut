@@ -9,3 +9,25 @@
     font-size: 1.1rem;
     color: #fff;
 }
+
+/* =======pizzas list page======== */
+.pizzas-list{
+    text-align: left;
+}
+.trash-btn,
+.edit-btn{
+    margin: 0px 7px;
+    cursor: pointer;
+}
+
+
+/* ========add pizza page======= */
+.addpizza-form{
+    text-align: left;
+    max-width: 500px;
+    padding: 20px 30px;
+}
+.addpizza-form .form-control{
+    box-shadow: none;
+    margin-bottom: 10px;
+}

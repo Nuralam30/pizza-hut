@@ -14,7 +14,7 @@ const NavMenu = () => {
 
     return (
         <div>
-            <Navbar bg="light" variant="light" className='shadow-lg p-3 mb-5 bg-white rounded'>
+            <Navbar bg="light" variant="light" className='shadow-lg p-3 mb-4 bg-white rounded'>
                 <Container>
                     <Navbar.Brand href="/">Pizza Hut</Navbar.Brand>
                     <Nav className="ml-auto">

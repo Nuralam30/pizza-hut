@@ -32,3 +32,18 @@ export const filterPizzas = (searchKey, category) => async dispatch => {
         dispatch({type: 'GET_PIZZAS_FAILED', payload: error})
     }
 }
+
+
+export const addPizza = (pizza) => async dispatch => {
+
+    dispatch({type: 'ADD_PIZZA_REQUEST'})
+
+    try {
+        const response = await axios.post('/api/pizzas/addPizza', {pizza});
+        console.log(response)
+        dispatch({type: 'ADD_PIZZA_SUCCESS'})
+    } catch (error) {
+        console.log(error)
+        dispatch({type: 'ADD_PIZZA_FAILED', payload: error})
+    }
+}
