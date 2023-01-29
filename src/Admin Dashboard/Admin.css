@@ -1,0 +1,11 @@
+
+.admin-navlist{
+    background-color: #1a1d3d;
+    padding: 10px;
+}
+.admin-nav-item{
+    text-decoration: none;
+    padding: 0px 20px;
+    font-size: 1.1rem;
+    color: #fff;
+}

@@ -13,6 +13,7 @@ import Cart from './components/Cart/Cart';
 import ErrorPage from './components/ErrorPage';
 import Register from './components/Register/Register';
 import Orders from './components/Orders/Orders';
+import Admin from './Admin Dashboard/Admin';
 
 function App() {
  
@@ -26,6 +27,7 @@ function App() {
           <Route path='/cart' element={<Cart></Cart>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
           <Route path='/orders' element={<Orders></Orders>}></Route>
+          <Route path='/admin/*' element={<Admin></Admin>}></Route>
           <Route path='*' element={<ErrorPage></ErrorPage>}></Route>
         </Routes>
       </Router>
