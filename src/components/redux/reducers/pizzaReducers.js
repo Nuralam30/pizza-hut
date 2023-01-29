@@ -45,3 +45,52 @@ export const addPizzaReducer = (state = {}, action) => {
             return state;
     }
 }
+
+
+export const getPizzaByIdReducer = (state = {}, action) => {
+
+    switch(action.type) {
+        case 'GET_PIZZA_BY_ID_REQUEST': 
+            return {
+                loading: true,
+                ...state
+            }
+        case 'GET_PIZZA_BY_ID_SUCCESS':
+            return {
+                loading: false,
+                pizza: action.payload
+            }
+        case 'GET_PIZZA_BY_ID_FAILED': 
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default: 
+            return state;
+    }
+}
+
+
+
+export const updatePizzaReducer = (state = {}, action) => {
+
+    switch(action.type) {
+        case 'UPDATE_PIZZA_REQUEST': 
+            return {
+                updateLoading: true,
+                ...state
+            }
+        case 'UPDATE_PIZZA_SUCCESS':
+            return {
+                updateLoading: false,
+                updateSuccess: true
+            }
+        case 'UPDATE_PIZZA_FAILED': 
+            return {
+                updateLoading: false,
+                updateError: action.payload
+            }
+        default: 
+            return state;
+    }
+}

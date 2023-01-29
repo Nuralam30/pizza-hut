@@ -5,10 +5,12 @@ import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import Error from '../components/Loader/Error';
 import Loader from '../components/Loader/Loader';
 import { getAllPizzas } from './../components/redux/actions/pizzaActions';
+import { useNavigate } from 'react-router-dom';
 
 const PizzasList = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const pizzasState = useSelector(state => state.getAllPizzasReducer);
     const { loading, pizzas, error } = pizzasState;
 
@@ -35,7 +37,7 @@ const PizzasList = () => {
                     </thead>
                     <tbody>
                         {
-                            pizzas && pizzas.map((pizza, i) => <tr>
+                            pizzas && pizzas.map((pizza, i) => <tr key={i}>
                                 <td>{i + 1}</td>
                                 <td>{pizza.name}</td>
                                 <td>
@@ -46,7 +48,7 @@ const PizzasList = () => {
                                 <td>{pizza.category}</td>
                                 <td>
                                     <Trash color='red' className='trash-btn' />
-                                    <PencilSquare color='green' className='edit-btn' />
+                                    <PencilSquare color='green' className='edit-btn' onClick={() =>navigate(`/admin/edit-pizza/${pizza._id}`)} />
                                 </td>
                             </tr>)
                         }

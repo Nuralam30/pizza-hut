@@ -2,7 +2,7 @@
 import {combineReducers} from 'redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { addPizzaReducer, getAllPizzasReducer } from './reducers/pizzaReducers';
+import { addPizzaReducer, getAllPizzasReducer, getPizzaByIdReducer, updatePizzaReducer } from './reducers/pizzaReducers';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { cartReducer } from './reducers/cartReducer';
 import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
@@ -15,7 +15,9 @@ const finalReducers = combineReducers({
     userLoginReducer: userLoginReducer,
     placeOrderReducer: placeOrderReducer,
     getUserOrdersReducer: getUserOrdersReducer,
-    addPizzaReducer: addPizzaReducer
+    addPizzaReducer: addPizzaReducer,
+    getPizzaByIdReducer: getPizzaByIdReducer,
+    updatePizzaReducer: updatePizzaReducer
 })
 
 

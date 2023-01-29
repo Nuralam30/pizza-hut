@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Error from '../components/Loader/Error';
+import { getPizzaById, updatePizza } from '../components/redux/actions/pizzaActions';
+import { Button, Container, Form } from 'react-bootstrap';
 import Loader from '../components/Loader/Loader';
-import { addPizza } from '../components/redux/actions/pizzaActions';
-import Success from './../components/Loader/Success';
+import Error from '../components/Loader/Error';
+import Success from '../components/Loader/Success';
 
-const AddPizza = () => {
+const EditPizza = () => {
+
+    const { pizzaId } = useParams();
+    const dispatch = useDispatch();
+
+    const pizzaState = useSelector(state => state.getPizzaByIdReducer);
+    const {pizza, error, loading} = pizzaState;
+
+    const updatedPizzaState = useSelector(state => state.updatePizzaReducer);
+    const {updateLoading, updateSuccess} = updatedPizzaState;
 
     const [name, setName] = useState('');
     const [smallPrice, setSmallPrice] = useState();
@@ -16,13 +26,30 @@ const AddPizza = () => {
     const [category, setCategory] = useState('');
     const [imageUrl, setImageUrl] = useState('');
 
-    const dispatch = useDispatch();
-    const addPizzaState = useSelector(state => state.addPizzaReducer);
 
-    const { success, error, loading } = addPizzaState;
+    useEffect(() => {
+        if(pizza){
+            if(pizza._id === pizzaId){
+                setName(pizza.name)
+                setSmallPrice(pizza.prices[0]['small'])
+                setMediumPrice(pizza.prices[0]['medium'])
+                setLargePrice(pizza.prices[0]['large'])
+                setCategory(pizza.category)
+                setDescription(pizza.description)
+                setImageUrl(pizza.image)
+            }
+            else{
+                dispatch(getPizzaById(pizzaId))
+            }
+        }
+        else{
+            dispatch(getPizzaById(pizzaId))
+        }
+    }, [pizza, dispatch])
 
     const handleFormSubmit = () => {
-        const pizza = {
+        const updatedPizza = {
+            _id: pizzaId,
             name,
             image: imageUrl,
             description,
@@ -33,16 +60,20 @@ const AddPizza = () => {
                 large: largePrice
             }
         }
-        dispatch(addPizza(pizza))
+        dispatch(updatePizza(updatedPizza))
     }
 
     return (
         <div>
+            <h4>Edit Pizza</h4>
+
             <Container>
-                <h4>Add Pizza</h4>
+                
                 {loading && <Loader></Loader>}
                 {error && <Error error='Something went wrong'></Error>}
-                {success && <Success success='New pizza added successfully'></Success>}
+
+                {updateLoading && <Loader></Loader>}
+                {updateSuccess && <Success success='Pizza updated successfully'></Success>}
 
                 <div className="add-pizza w-100 d-flex justify-content-center">
                     <Form className='addpizza-form w-100 shadow-lg p-4 mb-5 bg-white rounded'>
@@ -88,7 +119,7 @@ const AddPizza = () => {
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
                         />
-                        <Button size='sm' variant='success' onClick={handleFormSubmit}>Add Pizza</Button>
+                        <Button size='sm' variant='success' onClick={handleFormSubmit}>Save</Button>
                     </Form>
                 </div>
             </Container>
@@ -96,4 +127,4 @@ const AddPizza = () => {
     );
 };
 
-export default AddPizza;
+export default EditPizza;
