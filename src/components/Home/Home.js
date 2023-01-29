@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getAllPizzas } from '../redux/actions/pizzaActions';
 import Loader from '../Loader/Loader';
 import Error from '../Loader/Error';
+import Filter from '../Filter Pizza/Filter';
 
 const Home = () => {
 
@@ -21,9 +22,10 @@ const Home = () => {
     return (
         <div className='home'>
             <Container>
+                <Filter></Filter>
                 <Row>
                     {
-                        loading ? (<Loader></Loader>) : error ? (<Error></Error>) : 
+                        loading ? (<Loader></Loader>) : error ? (<Error error='Something went wrong'></Error>) : 
                         pizzas.map(pi => <Pizza pizza = {pi} key={pi._id}></Pizza>)
                     }
                 </Row>
