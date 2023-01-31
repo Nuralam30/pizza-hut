@@ -23,7 +23,7 @@ const OrderList = () => {
                 {loading && <Loader></Loader>}
                 {error && <Error error='Something went wrong'></Error>}
 
-                <Table striped bordered hover className='pizzas-list'>
+                <Table striped bordered responsive hover className='pizzas-list'>
                     <thead>
                         <tr className='bg-primary color-white'>
                             <th>#</th>

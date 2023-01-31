@@ -35,14 +35,26 @@ export const userLogout = () => dispatch => {
 
 export const getAllUsers = () => async dispatch => {
 
-    dispatch('GET_USERS_REQUEST')
+    dispatch({type: 'GET_USERS_REQUEST'})
 
     try {
-        const response = await axios.get('/api/users/getallusers')
-        console.log(response)
+        const response = await axios.get('/api/users/getAllUsers');
         dispatch({type: 'GET_USERS_SUCCESS', payload: response.data})
     } catch (error) {
         console.log(error)
         dispatch({type: 'GET_USERS_FAILED', payload: error})
+    }
+}
+
+
+export const deleteUser = (userId) => async dispatch => {
+
+    try {
+        const response = await axios.post('/api/users/deleteUser', {userId});
+        alert('User Deleted Successfully')
+        console.log(response)
+        window.location.reload();
+    } catch (error) {
+        console.log(error)
     }
 }
