@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import Error from '../components/Loader/Error';
 import Loader from '../components/Loader/Loader';
-import { getAllPizzas } from './../components/redux/actions/pizzaActions';
+import { deletePizza, getAllPizzas } from './../components/redux/actions/pizzaActions';
 import { useNavigate } from 'react-router-dom';
 
 const PizzasList = () => {
@@ -47,7 +47,7 @@ const PizzasList = () => {
                                 </td>
                                 <td>{pizza.category}</td>
                                 <td>
-                                    <Trash color='red' className='trash-btn' />
+                                    <Trash color='red' className='trash-btn' onClick={() => dispatch(deletePizza(pizza._id))} />
                                     <PencilSquare color='green' className='edit-btn' onClick={() =>navigate(`/admin/edit-pizza/${pizza._id}`)} />
                                 </td>
                             </tr>)

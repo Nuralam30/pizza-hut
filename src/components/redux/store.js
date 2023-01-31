@@ -5,8 +5,8 @@ import thunk from 'redux-thunk';
 import { addPizzaReducer, getAllPizzasReducer, getPizzaByIdReducer, updatePizzaReducer } from './reducers/pizzaReducers';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { cartReducer } from './reducers/cartReducer';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
-import { getUserOrdersReducer, placeOrderReducer } from './reducers/orederReducer';
+import { userLoginReducer, userRegisterReducer, getAllUsersReducer } from './reducers/userReducer';
+import { getUserOrdersReducer, placeOrderReducer, getAllOrdersReducer } from './reducers/orederReducer';
 
 const finalReducers = combineReducers({
     getAllPizzasReducer: getAllPizzasReducer,
@@ -17,7 +17,9 @@ const finalReducers = combineReducers({
     getUserOrdersReducer: getUserOrdersReducer,
     addPizzaReducer: addPizzaReducer,
     getPizzaByIdReducer: getPizzaByIdReducer,
-    updatePizzaReducer: updatePizzaReducer
+    updatePizzaReducer: updatePizzaReducer,
+    getAllOrdersReducer: getAllOrdersReducer,
+    getAllUsersReducer: getAllUsersReducer
 })
 
 
