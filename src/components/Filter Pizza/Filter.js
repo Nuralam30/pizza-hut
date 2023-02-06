@@ -17,7 +17,7 @@ const Filter = () => {
                     <Form.Control 
                     className='w-100' 
                     type="email" 
-                    placeholder="Enter email"
+                    placeholder="Search Pizza"
                     value={searchKey}
                     onChange={(e) => setSearchKey(e.target.value.toLowerCase())}
                      />
